@@ -10,7 +10,7 @@ const checkDigitCalculation = inputString => {
 // Formatting / mapping --
 // Example of mathing string: 'EREFGRE45<<<<ER'
 const _doesStringFitToFormat = inputString =>
-  /^([A-Z]|[0-9]|<)+$/g.test(inputString)
+  new RegExp(/^([A-Z]|[0-9]|<)+$/g).test(inputString)
 
 const _stringIntoArrayOfChars = str => str.split('')
 
