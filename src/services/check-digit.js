@@ -3,8 +3,8 @@ const checkDigitCalculation = inputString => {
     throw new Error('Check Digit : Input string does not match required format')
   const arrayOfChars = _stringIntoArrayOfChars(inputString)
   const arrayOfNumbers = _arrayOfCharIntoArrayOfNumber(arrayOfChars)
-  const product = _computeProduct(arrayOfNumbers)
-  return 10 - product % 10
+  const weightedSum = _computeWeightedSum(arrayOfNumbers)
+  return weightedSum % 10
 }
 
 // Formatting / mapping --
@@ -24,7 +24,7 @@ const _convertCharIntoNumber = chr => (chr === '<' ? 0 : chr.charCodeAt(0) - 55)
 const _isCharANumber = chr => Number(chr) == chr
 
 // Calculation --
-const _computeProduct = arrayOfNumbers => {
+const _computeWeightedSum = arrayOfNumbers => {
   let result = 0
   const weights = [7, 3, 1]
   arrayOfNumbers.forEach((value, i) => {
