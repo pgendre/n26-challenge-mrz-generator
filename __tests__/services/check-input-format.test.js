@@ -6,6 +6,7 @@ const {
 
 const _isDateFormatValid = service.__get__('_isDateFormatValid')
 const _isNameFormatValid = service.__get__('_isNameFormatValid')
+const _isCountryCodeValid = service.__get__('_isCountryCodeValid')
 
 test('SERVICES CHECK INPUT FORMAT 01: Should detect a corrupted date', () => {
   const result = _isDateFormatValid('1920-04-45')
@@ -24,5 +25,15 @@ test('SERVICES CHECK INPUT FORMAT 03: Should detect a valid name', () => {
 
 test('SERVICES CHECK INPUT FORMAT 04: Should detect a corrupted name', () => {
   const result = _isNameFormatValid("Darth des Vaille d''Orthus-Mer")
+  expect(result).toBe(false)
+})
+
+test('SERVICES CHECK INPUT FORMAT 05: Should detect a valid country code', () => {
+  const result = _isCountryCodeValid('FIN')
+  expect(result).toBe(true)
+})
+
+test('SERVICES CHECK INPUT FORMAT 06: Should detect a corrupted country code', () => {
+  const result = _isCountryCodeValid('F@N')
   expect(result).toBe(false)
 })
