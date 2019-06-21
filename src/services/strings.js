@@ -5,6 +5,7 @@ const _checkReplaceSubStringInput = (str, subStr, position) => {
     throw new Error('replaceSubStringAtPosition : invalid input')
   }
 }
+
 const replaceSubStringAtPositionUppercase = (str, subStr, position) => {
   _checkReplaceSubStringInput(str, subStr, position)
 
@@ -15,4 +16,10 @@ const replaceSubStringAtPositionUppercase = (str, subStr, position) => {
   )
 }
 
-module.exports = { generateEmptyLine, replaceSubStringAtPositionUppercase }
+const replaceSpecialCharsBySpaces = str => str.replace(/[ |-|-|']/g, '<')
+
+module.exports = {
+  generateEmptyLine,
+  replaceSubStringAtPositionUppercase,
+  replaceSpecialCharsBySpaces
+}
