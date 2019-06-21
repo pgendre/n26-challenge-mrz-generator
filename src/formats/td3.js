@@ -3,19 +3,32 @@ const {
   replaceSubStringAtPositionToUpCase,
   replaceSpecialCharsBySpaces,
   truncateString
-} = require('../../services/string')
+} = require('../services/string')
 
-const { checkDigitCalculation } = require('../../services/check-digit')
+const { checkDigitCalculation } = require('../services/check-digit')
 
 const {
   generateDateWithCheckDigit,
   generatePassportNumber,
-  generateSex
-} = require('../common')
+  generateSex,
+  generatePassportType,
+  generateCountryCode,
+  generateSurnameAndGivenNames
+} = require('./common')
 
 const lineLength = 44
 
-const generateLine2 = ({ passport, user }) => {
+const generateMrz = data => `${_generateLine1(data)}\n${_generateLine2(data)}`
+
+const _generateLine1 = ({ passport, user }) => {
+  let line = generateEmptyLine(lineLength)
+  line = generatePassportType(line, passport)
+  line = generateCountryCode(line, passport.issuingCountry, 2)
+  line = generateSurnameAndGivenNames(line, user, 5, lineLength)
+  return line
+}
+
+const _generateLine2 = ({ passport, user }) => {
   let line = generateEmptyLine(lineLength)
   line = generatePassportNumber(line, passport, 0)
   line = _generateUserNationality(line, user)
@@ -23,7 +36,6 @@ const generateLine2 = ({ passport, user }) => {
   line = generateSex(line, user, 20)
   line = _generateExpirationDate(line, passport)
   line = _generateOptionalField(line, passport)
-  console.log('LINE ==========', line)
   return _generateGlobalDigitCheck(line)
 }
 
@@ -47,9 +59,8 @@ const _generateOptionalField = (line, passport) => {
 const _generateGlobalDigitCheck = line => {
   let stringToBeChecked =
     line.slice(0, 10) + line.slice(13, 20) + line.slice(21, 43)
-
   const digitCheck = checkDigitCalculation(stringToBeChecked)
   return replaceSubStringAtPositionToUpCase(line, digitCheck, 43)
 }
 
-module.exports = { generateLine2 }
+module.exports = { generateMrz }
