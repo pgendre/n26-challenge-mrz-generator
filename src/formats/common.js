@@ -1,4 +1,8 @@
-const { replaceSubStringAtPositionToUpCase } = require('../services/string')
+const {
+  replaceSubStringAtPositionToUpCase,
+  replaceSpecialCharsBySpaces,
+  truncateString
+} = require('../services/string')
 const { checkDigitCalculation } = require('../services/check-digit')
 const { stringDateToYYMMDD } = require('../services/date')
 
@@ -23,12 +27,34 @@ const generatePassportType = (line, passport) => {
   return line
 }
 
-const generateIssuingCountry = (line, passport) =>
-  replaceSubStringAtPositionToUpCase(line, passport.issuingCountry, 2)
+const generateCountryCode = (line, code, position) =>
+  replaceSubStringAtPositionToUpCase(line, code, position)
+
+const generateSex = (line, user, position) =>
+  replaceSubStringAtPositionToUpCase(line, user.sex[0].toUpperCase(), position)
+
+const generateSurnameAndGivenNames = (line, user, position, lineLength) => {
+  const surname = replaceSpecialCharsBySpaces(user.surname)
+  line = replaceSubStringAtPositionToUpCase(line, surname, position)
+
+  const givenNamesPosition = position + user.surname.length + 2
+  const givenNamesMaxLength = lineLength - givenNamesPosition
+  const givenNames = truncateString(
+    replaceSpecialCharsBySpaces(user.givenNames),
+    givenNamesMaxLength
+  )
+  return replaceSubStringAtPositionToUpCase(
+    line,
+    givenNames,
+    givenNamesPosition
+  )
+}
 
 module.exports = {
   generateDateWithCheckDigit,
   generatePassportNumber,
   generatePassportType,
-  generateIssuingCountry
+  generateCountryCode,
+  generateSex,
+  generateSurnameAndGivenNames
 }

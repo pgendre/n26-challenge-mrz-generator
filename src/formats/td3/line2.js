@@ -9,7 +9,8 @@ const { checkDigitCalculation } = require('../../services/check-digit')
 
 const {
   generateDateWithCheckDigit,
-  generatePassportNumber
+  generatePassportNumber,
+  generateSex
 } = require('../common')
 
 const lineLength = 44
@@ -19,7 +20,7 @@ const generateLine2 = ({ passport, user }) => {
   line = generatePassportNumber(line, passport, 0)
   line = _generateUserNationality(line, user)
   line = _generateDateOfBirth(line, user)
-  line = _generateSex(line, user)
+  line = generateSex(line, user, 20)
   line = _generateExpirationDate(line, passport)
   line = _generateOptionalField(line, passport)
   console.log('LINE ==========', line)
@@ -31,9 +32,6 @@ const _generateUserNationality = (line, user) =>
 
 const _generateDateOfBirth = (line, user) =>
   generateDateWithCheckDigit(line, user.dateOfBirth, 13)
-
-const _generateSex = (line, user) =>
-  replaceSubStringAtPositionToUpCase(line, user.sex[0].toUpperCase(), 20)
 
 const _generateExpirationDate = (line, passport) =>
   generateDateWithCheckDigit(line, passport.expirationDate, 21)
