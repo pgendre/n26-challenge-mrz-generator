@@ -1,60 +1,76 @@
 const countryCodes = require('./data/country-codes')
 
 const checkInputFormat = ({ mrzType, passport, user }) => {
-  if (!_isMrzTypeValid(type)) {
-    throw new Error('Mrz type is not valid.')
-  }
+  _testAndThrowException = (_isMrzTypeValid(type), 'Mrz type is not valid.')
   _checkPassportInput(passport)
   _checkUserInput(user)
 }
 
 const _checkPassportInput = passport => {
-  if (!_isALetter(passport.type)) {
-    throw new Error('Passport type must be a letter.')
-  }
+  _testAndThrowException(
+    _isALetter(passport.type),
+    'Passport type must be a letter.'
+  )
 
-  if (!_isAValidPrecisionOfType(passport.precisionOftype)) {
-    throw new Error('Second letter for possport type is not valid.')
-  }
+  _testAndThrowException(
+    _isAValidPrecisionOfType(passport.precisionOftype),
+    'Second letter for passport type is not valid.'
+  )
 
-  if (!_isCountryCodeValid(passport.issuingCountry)) {
-    throw new Error('Passport issuing country is not a valid ISO 3166 code.')
-  }
+  _testAndThrowException(
+    _isCountryCodeValid(passport.issuingCountry),
+    'Passport issuing country is not a valid ISO 3166 code.'
+  )
 
-  if (
-    !_isAnAlphaNumericString(passport.number) ||
-    passport.number.length !== 9
-  ) {
-    throw new Error('Passport number does not match required format.')
-  }
+  _testAndThrowException(
+    _isAnAlphaNumericString(passport.number) || passport.number.length !== 9,
+    'Passport number does not match the required format.'
+  )
 
-  if (
-    !_isAnAlphaNumericString(passport.optionalField1) ||
-    !_isAnAlphaNumericString(passport.optionalField2)
-  ) {
-    throw new Error('Optional fields must be an alphanumeric string.')
-  }
+  _testAndThrowException(
+    !_isAnAlphaNumericString(passport.optionalField1),
+    'Optional field 1 must be an alphanumeric string.'
+  )
 
-  if (passport.optionalField2 && mrzType === 'td3') {
-    throw new Error('Second optional field is not available for TD3 format.')
-  }
-  if (!_isDateFormatValid(passport.expirationDate)) {
-    throw new Error('Passport expiration date is not valid.')
-  }
+  _testAndThrowException(
+    !_isAnAlphaNumericString(passport.optionalField2),
+    'Optional field 2 must be an alphanumeric string.'
+  )
+
+  _testAndThrowException(
+    !(passport.optionalField2 && mrzType === 'td3'),
+    'Second optional field is not available for TD3 format.'
+  )
+  _testAndThrowException(
+    !_isDateFormatValid(passport.expirationDate),
+    'Passport expiration date is not valid.'
+  )
 }
 
 const _checkUserInput = user => {
-  if (!_isNameFormatValid(user.surname)) {
-    throw new Error('Surname does not match required format.')
-  }
-  if (!_isNameFormatValid(user.givenNames)) {
-    throw new Error('Given names do not match required format.')
-  }
-  if (!_isDateFormatValid(user.dateOfBirth)) {
-    throw new Error("User's date of birth is not valid.")
-  }
-  if (!_isSexValid(user.dateOfBirth)) {
-    throw new Error("User's date of birth is not valid.")
+  _testAndThrowException(
+    _isNameFormatValid(user.surname),
+    'Surname does not match required format.'
+  )
+
+  _testAndThrowException(
+    _isNameFormatValid(user.givenNames),
+    'Given names do not match required format.'
+  )
+  _testAndThrowException(
+    _isDateFormatValid(user.dateOfBirth),
+    "User's date of birth is not valid."
+  )
+
+  _testAndThrowException(
+    _isSexValid(user.dateOfBirth),
+    "User's sex is not valid."
+  )
+}
+
+const _testAndThrowException = (testToValidate, errorMessage) => {
+  if (!testToValidate) {
+    throw new Error(errorMessage)
   }
 }
 
