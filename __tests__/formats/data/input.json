@@ -3,7 +3,8 @@
     "type": "p",
     "issuingCountry": "UTO",
     "number": "11av56868",
-    "expirationDate": "11 May 2021 00:00:00 GMT"
+    "expirationDate": "11 May 2021 00:00:00 GMT",
+    "optionalField1": "optional field"
   },
   "user": {
     "surname": "Ramond d'Aurth-Ulis",
