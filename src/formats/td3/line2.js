@@ -19,8 +19,7 @@ const generateLine2 = ({ passport, user }) => {
   line2 = _generateSex(line2, user)
   line2 = _generateExpirationDate(line2, passport)
   line2 = _generateOptionalField(line2, passport)
-  line2 = _generateGlobalDigitCheck(line2)
-  console.log('LINE 2 ==================', line2)
+  return _generateGlobalDigitCheck(line2)
 }
 
 const _generatePassportNumber = (line2, passport) => {
@@ -48,9 +47,11 @@ const _generateOptionalField = (line2, passport) => {
   const digitCheck = checkDigitCalculation(field)
   return replaceSubStringAtPositionToUpCase(line2, digitCheck, 42)
 }
+
 const _generateGlobalDigitCheck = line2 => {
   let stringToBeChecked =
-    line2.slice(0, 9) + line2.slice(13, 19) + line2.slice(21, 42)
+    line2.slice(0, 10) + line2.slice(13, 20) + line2.slice(21, 43)
+
   const digitCheck = checkDigitCalculation(stringToBeChecked)
   return replaceSubStringAtPositionToUpCase(line2, digitCheck, 43)
 }

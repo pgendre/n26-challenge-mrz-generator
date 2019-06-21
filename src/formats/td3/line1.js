@@ -15,7 +15,7 @@ const generateLine1 = ({ passport, user }) => {
   line1 = _generatePassportType(line1, passport)
   line1 = _generateIssuingCountry(line1, passport)
   line1 = _generateSurname(line1, user)
-  line1 = _generateGivenNames(line1, user, surname)
+  line1 = _generateGivenNames(line1, user)
 
   return line1
 }
@@ -36,8 +36,8 @@ const _generateSurname = (line1, user) => {
   return replaceSubStringAtPositionToUpCase(line1, surname, 5)
 }
 
-const _generateGivenNames = (line1, user, surname) => {
-  const givenNamesPosition = 5 + surname.length + 2
+const _generateGivenNames = (line1, user) => {
+  const givenNamesPosition = 5 + user.surname.length + 2
   const givenNamesMaxLength = lineLength - givenNamesPosition
 
   const givenNames = truncateString(
