@@ -5,11 +5,11 @@ const {
   truncateString
 } = require('../services/strings')
 
+const lineLength = 44
+
 const generateTd3Mrz = data => {}
 
 const _generateLine1 = ({ passport, user }) => {
-  const lineLength = 44
-
   let line1 = generateEmptyLine(lineLength)
 
   line1 = replaceSubStringAtPositionToUpCase(line1, passport.type, 0)
@@ -20,19 +20,23 @@ const _generateLine1 = ({ passport, user }) => {
 
   const surname = replaceSpecialCharsBySpaces(user.surname)
   line1 = replaceSubStringAtPositionToUpCase(line1, surname, 5)
+  line1 = _generateGivenNames(line1, user, surname)
+  return line1
+}
 
+const _generateGivenNames = (line1, user, surname) => {
   const givenNamesPosition = 5 + surname.length + 2
   const givenNamesMaxLength = lineLength - givenNamesPosition
+
   const givenNames = truncateString(
-    replaceSpecialCharsBySpaces(user.givenNames)
+    replaceSpecialCharsBySpaces(user.givenNames),
+    givenNamesMaxLength
   )
-  line1 = replaceSubStringAtPositionToUpCase(
+  return replaceSubStringAtPositionToUpCase(
     line1,
     givenNames,
     givenNamesPosition
   )
-  return line1
-  console.log('LINE 1 =', line1)
 }
 
 module.exports = { generateTd3Mrz }
