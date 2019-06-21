@@ -6,6 +6,10 @@ const checkInputFormat = ({ mrzType, passport, user }) => {
   _checkUserInput(user)
 }
 
+const setDefaultValueToUndefinedFields = ({ passport, user }) => {
+  if (!passport.optionalField1) passport.optionalField1 = ''
+  if (!passport.optionalField2) passport.optionalField2 = ''
+}
 const _checkPassportInput = passport => {
   _testAndThrowException(
     _isALetter(passport.type),
@@ -93,4 +97,4 @@ const _isCountryCodeValid = code => countryCodes.indexOf(code) !== -1
 
 const _isSexValid = sex => ['female', 'male', 'unspecified'].indexOf(sex) !== -1
 
-module.exports = { checkInputFormat }
+module.exports = { checkInputFormat, setDefaultValueToUndefinedFields }
