@@ -6,9 +6,8 @@ const _checkReplaceSubStringInput = (str, subStr, position) => {
   }
 }
 
-const replaceSubStringAtPositionUppercase = (str, subStr, position) => {
+const replaceSubStringAtPositionToUpCase = (str, subStr, position) => {
   _checkReplaceSubStringInput(str, subStr, position)
-
   return (
     str.substring(0, position) +
     subStr.toUpperCase() +
@@ -18,8 +17,11 @@ const replaceSubStringAtPositionUppercase = (str, subStr, position) => {
 
 const replaceSpecialCharsBySpaces = str => str.replace(/[ |-|-|']/g, '<')
 
+const truncateString = (str, maxLength) => str.substring(0, maxLength)
+
 module.exports = {
   generateEmptyLine,
-  replaceSubStringAtPositionUppercase,
-  replaceSpecialCharsBySpaces
+  replaceSubStringAtPositionToUpCase,
+  replaceSpecialCharsBySpaces,
+  truncateString
 }

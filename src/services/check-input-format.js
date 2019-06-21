@@ -13,7 +13,7 @@ const _checkPassportInput = passport => {
   )
 
   _testAndThrowException(
-    _isAValidPrecisionOfType(passport.precisionOftype),
+    _isAValidPrecisionOfType(passport.typePrecision),
     'Second letter for passport type is not valid.'
   )
 
