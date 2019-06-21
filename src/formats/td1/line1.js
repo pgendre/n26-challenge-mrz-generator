@@ -7,25 +7,28 @@ const {
 
 const { checkDigitCalculation } = require('../../services/check-digit')
 
+const {
+  generatePassportType,
+  generateIssuingCountry,
+  generatePassportNumber
+} = require('../common')
+
 const lineLength = 30
 
 const generateLine1 = ({ passport, user }) => {
   let line = generateEmptyLine(lineLength)
-  line = _generatePassportType(line, passport)
-  line = _generateIssuingCountry(line, passport)
-
+  line = generatePassportType(line, passport)
+  line = generateIssuingCountry(line, passport)
+  line = generatePassportNumber(line, passport, 5)
+  line = _generateOptionalField(line, passport)
+  console.log('LINE ===============', line)
   return line
 }
 
-const _generatePassportType = (line, passport) => {
-  line = replaceSubStringAtPositionToUpCase(line, passport.type, 0)
-  if (passport.precisionType) {
-    line = replaceSubStringAtPositionToUpCase(line, passport.precisionType, 1)
-  }
-  return line
+const _generateOptionalField = (line, passport) => {
+  let field = truncateString(passport.optionalField1.toUpperCase(), 15)
+  field = replaceSpecialCharsBySpaces(field)
+  return replaceSubStringAtPositionToUpCase(line, field, 15)
 }
-
-const _generateIssuingCountry = (line, passport) =>
-  replaceSubStringAtPositionToUpCase(line, passport.issuingCountry, 2)
 
 module.exports = { generateLine1 }

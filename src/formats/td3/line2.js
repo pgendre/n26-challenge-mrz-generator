@@ -22,6 +22,7 @@ const generateLine2 = ({ passport, user }) => {
   line = _generateSex(line, user)
   line = _generateExpirationDate(line, passport)
   line = _generateOptionalField(line, passport)
+  console.log('LINE ==========', line)
   return _generateGlobalDigitCheck(line)
 }
 
