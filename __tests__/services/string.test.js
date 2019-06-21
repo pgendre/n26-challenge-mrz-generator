@@ -1,13 +1,9 @@
-// const rewire = require('rewire')
-// const service = rewire('../../src/services/strings')
 const {
   generateEmptyLine,
   replaceSubStringAtPositionToUpCase,
   replaceSpecialCharsBySpaces,
   truncateString
-} = require('../../src/services/strings')
-
-// const _doesStringFitToFormat = service.__get__('_doesStringFitToFormat')
+} = require('../../src/services/string')
 
 test('SERVICES STRINGS 01: <replaceSubStringAtPositionToUpCase> should throw \
   an error bad input in ', () => {
