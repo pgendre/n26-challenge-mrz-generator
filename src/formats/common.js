@@ -9,4 +9,10 @@ const generateDateWithCheckDigit = (line, stringDate, position) => {
   return replaceSubStringAtPositionToUpCase(line, digitCheck, position + 6)
 }
 
-module.exports = { generateDateWithCheckDigit }
+const generatePassportNumber = (line, passport, position) => {
+  line = replaceSubStringAtPositionToUpCase(line, passport.number, position)
+  const digitCheck = checkDigitCalculation(passport.number.toUpperCase())
+  return replaceSubStringAtPositionToUpCase(line, digitCheck, position + 9)
+}
+
+module.exports = { generateDateWithCheckDigit, generatePassportNumber }

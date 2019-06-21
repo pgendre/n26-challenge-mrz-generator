@@ -7,53 +7,50 @@ const {
 
 const { checkDigitCalculation } = require('../../services/check-digit')
 
-const { generateDateWithCheckDigit } = require('../common')
+const {
+  generateDateWithCheckDigit,
+  generatePassportNumber
+} = require('../common')
 
 const lineLength = 44
 
 const generateLine2 = ({ passport, user }) => {
-  let line2 = generateEmptyLine(lineLength)
-  line2 = _generatePassportNumber(line2, passport)
-  line2 = _generateUserNationality(line2, user)
-  line2 = _generateDateOfBirth(line2, user)
-  line2 = _generateSex(line2, user)
-  line2 = _generateExpirationDate(line2, passport)
-  line2 = _generateOptionalField(line2, passport)
-  return _generateGlobalDigitCheck(line2)
+  let line = generateEmptyLine(lineLength)
+  line = generatePassportNumber(line, passport, 0)
+  line = _generateUserNationality(line, user)
+  line = _generateDateOfBirth(line, user)
+  line = _generateSex(line, user)
+  line = _generateExpirationDate(line, passport)
+  line = _generateOptionalField(line, passport)
+  return _generateGlobalDigitCheck(line)
 }
 
-const _generatePassportNumber = (line2, passport) => {
-  line2 = replaceSubStringAtPositionToUpCase(line2, passport.number, 0)
-  const digitCheck = checkDigitCalculation(passport.number.toUpperCase())
-  return replaceSubStringAtPositionToUpCase(line2, digitCheck, 9)
-}
+const _generateUserNationality = (line, user) =>
+  replaceSubStringAtPositionToUpCase(line, user.nationality, 10)
 
-const _generateUserNationality = (line2, user) =>
-  replaceSubStringAtPositionToUpCase(line2, user.nationality, 10)
+const _generateDateOfBirth = (line, user) =>
+  generateDateWithCheckDigit(line, user.dateOfBirth, 13)
 
-const _generateDateOfBirth = (line2, user) =>
-  generateDateWithCheckDigit(line2, user.dateOfBirth, 13)
+const _generateSex = (line, user) =>
+  replaceSubStringAtPositionToUpCase(line, user.sex[0].toUpperCase(), 20)
 
-const _generateSex = (line2, user) =>
-  replaceSubStringAtPositionToUpCase(line2, user.sex[0].toUpperCase(), 20)
+const _generateExpirationDate = (line, passport) =>
+  generateDateWithCheckDigit(line, passport.expirationDate, 21)
 
-const _generateExpirationDate = (line2, passport) =>
-  generateDateWithCheckDigit(line2, passport.expirationDate, 21)
-
-const _generateOptionalField = (line2, passport) => {
+const _generateOptionalField = (line, passport) => {
   let field = truncateString(passport.optionalField1.toUpperCase(), 14)
   field = replaceSpecialCharsBySpaces(field)
-  line2 = replaceSubStringAtPositionToUpCase(line2, field, 28)
+  line = replaceSubStringAtPositionToUpCase(line, field, 28)
   const digitCheck = checkDigitCalculation(field)
-  return replaceSubStringAtPositionToUpCase(line2, digitCheck, 42)
+  return replaceSubStringAtPositionToUpCase(line, digitCheck, 42)
 }
 
-const _generateGlobalDigitCheck = line2 => {
+const _generateGlobalDigitCheck = line => {
   let stringToBeChecked =
-    line2.slice(0, 10) + line2.slice(13, 20) + line2.slice(21, 43)
+    line.slice(0, 10) + line.slice(13, 20) + line.slice(21, 43)
 
   const digitCheck = checkDigitCalculation(stringToBeChecked)
-  return replaceSubStringAtPositionToUpCase(line2, digitCheck, 43)
+  return replaceSubStringAtPositionToUpCase(line, digitCheck, 43)
 }
 
 module.exports = { generateLine2 }
