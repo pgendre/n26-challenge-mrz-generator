@@ -54,5 +54,5 @@ test('SERVICES CHECK DIGIT 07: Should throw an exception if input string does NO
 
 test('SERVICES CHECK DIGIT 08: Should process complete sequence correctly) ', () => {
   const result = checkDigitCalculation('11AV56868')
-  expect(result).toBe(0)
+  expect(result).toBe('0')
 })

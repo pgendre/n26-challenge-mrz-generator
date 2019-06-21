@@ -4,7 +4,7 @@ const checkDigitCalculation = inputString => {
   const arrayOfChars = _stringIntoArrayOfChars(inputString)
   const arrayOfNumbers = _arrayOfCharIntoArrayOfNumber(arrayOfChars)
   const weightedSum = _computeWeightedSum(arrayOfNumbers)
-  return weightedSum % 10
+  return String(weightedSum % 10)
 }
 
 // Formatting / mapping --
