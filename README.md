@@ -1,5 +1,74 @@
 ## MRZ Generator
 
+This module allows to create a MRZ (Machine Readable Zone) of type TD1 and TD3.
+For more information, check the following page:
+https://en.wikipedia.org/wiki/Machine-readable_passport
+
+### How to use
+
+#### Install
+
+Last version:
+
+```
+npm install --save https://github.com/pgendre/n26-challenge-mrz-generator.git
+```
+
+A particular version:
+
+```
+npm install --save https://github.com/pgendre/n26-challenge-mrz-generator.git#x.y.z
+```
+
+#### Basic usage
+
+```
+import { generateMrz } from 'mrz-generator'
+
+const inputData = {
+  passport: {
+    mrzType: 'td1',
+    type: 'p',
+    issuingCountry: 'FRA',
+    number: '11av56868',
+    expirationDate: '11 May 2021 00:00:00 GMT',
+    optionalField1: '',
+    optionalField2: ''
+  },
+  user: {
+    surname: 'Gendre',
+    givenNames: 'Pierre Joseh Alexandre',
+    nationality: 'FRA',
+    dateOfBirth: '17 Oct 1986 00:12:00 GMT',
+    sex: 'male'
+  }
+}
+
+const basicTest => {
+  try {
+    const mrz = generateMrz(inputData)
+    console.log(mrz)
+    // > 'P<FRA11AV568680<<<<<<<<<<<<<<<\n8610175M2105116FRA<<<<<<<<<<<<\nGENDRE<<PIERRE<JOSEH<ALEXANDRE'
+  } catch (e) {
+    console.error(e)
+  }
+}
+```
+
+#### API Specification
+
+Description of input object:
+
+| 1st level key | 2nd level      | Required | Format           | Description                               | Example     |
+| ------------- | -------------- | -------- | ---------------- | ----------------------------------------- | ----------- |
+| passport      | mrzType        | Yes      | 'td1' or 'td3'   | Type of mrz                               | 'td1'       |
+|               | type           | Yes      | AlphaNum(1)      | Type of passport                          | 'p'         |
+|               | issuingCountry | Yes      | Country ISO \*   | Document issuing country                  | 'ALB'       |
+|               | number         | Yes      | AlphaNum(9)      | Document number                           | 'AD98FR334' |
+|               | expirationDate | Yes      | Stringified Date | Format is free. Document expiration date. |
+
+\* : See the list below to get correct country code.
+
 ### Description
 
 ABW Aruba
