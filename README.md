@@ -1,12 +1,12 @@
 ## MRZ Generator
 
-This module allows to create a MRZ (Machine Readable Zone) of type TD1 and TD3.
-For more information, check the following page:
+The module allows to create a MRZ (Machine Readable Zone) of type TD1 and TD3.</br>
+For more information, check the following page: </br>
 https://en.wikipedia.org/wiki/Machine-readable_passport
 
-### How to use
+### How to use it
 
-#### Install
+#### Installation
 
 Last version:
 
@@ -14,7 +14,7 @@ Last version:
 npm install --save https://github.com/pgendre/n26-challenge-mrz-generator.git
 ```
 
-A particular version:
+The **x.y.z** version:
 
 ```
 npm install --save https://github.com/pgendre/n26-challenge-mrz-generator.git#x.y.z
@@ -32,8 +32,7 @@ const inputData = {
     issuingCountry: 'FRA',
     number: '11av56868',
     expirationDate: '11 May 2021 00:00:00 GMT',
-    optionalField1: '',
-    optionalField2: ''
+
   },
   user: {
     surname: 'Gendre',
@@ -57,19 +56,28 @@ const basicTest => {
 
 #### API Specification
 
-Description of input object:
+Format of input data:
 
-| 1st level key | 2nd level      | Required | Format           | Description                               | Example     |
-| ------------- | -------------- | -------- | ---------------- | ----------------------------------------- | ----------- |
-| passport      | mrzType        | Yes      | 'td1' or 'td3'   | Type of mrz                               | 'td1'       |
-|               | type           | Yes      | AlphaNum(1)      | Type of passport                          | 'p'         |
-|               | issuingCountry | Yes      | Country ISO \*   | Document issuing country                  | 'ALB'       |
-|               | number         | Yes      | AlphaNum(9)      | Document number                           | 'AD98FR334' |
-|               | expirationDate | Yes      | Stringified Date | Format is free. Document expiration date. |
+| 1 level key | 2 level key    | Required | Format           | Description                               | Example           |
+| ----------- | -------------- | -------- | ---------------- | ----------------------------------------- | ----------------- |
+| passport    | mrzType        | Yes      | 'td1' or 'td3'   | Type of mrz.                              | 'td1'             |
+|             | type           | Yes      | AlphaNum(1)      | Type of passport.                         | 'i'               |
+|             | typePrecision  | No       | AlphaNum(1)      | Precise the type of passport.             | 'd'               |
+|             | issuingCountry | Yes      | Country ISO \*   | Document issuing country.                 | 'ALB'             |
+|             | number         | Yes      | AlphaNum(9)      | Document number.                          | 'AD98FR334'       |
+|             | expirationDate | Yes      | Stringified Date | Format is free. Document expiration date. | '2023-06-24'      |
+|             | optionalField1 | No       | AlphaNum(-)      | Optional field.                           | '54 option32'     |
+|             | optionalField2 | No       | AlphaNum(-)      | Optional field (only available for TD1).  | 'other 98'        |
+| user        | surname        | Yes      | AlphaNum(-)\*\*  | User surname.                             | 'Willson Mark'    |
+|             | givenNames     | Yes      | AlphaNum(-)\*\*  | User given names.                         | 'John Max Steven' |
+|             | nationality    | Yes      | Country ISO \*   | User nationality.                         | 'BEL'             |
+|             | dateOfBirth    | Yes      | Stringified Date | User date of birth.                       | '1988-03-15'      |
+|             | dateOfBirth    | Yes      | Stringified Date | User date of birth.                       | '1988-03-15'      |
 
 \* : See the list below to get correct country code.
+\*\* : Are allowed hyphens, spaces and apostrophes.
 
-### Description
+#### Countries format
 
 ABW Aruba
 AFG Afghanistan
