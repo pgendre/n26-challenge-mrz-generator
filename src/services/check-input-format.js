@@ -42,12 +42,12 @@ const _checkPassportInput = passport => {
   )
 
   _testAndThrowException(
-    !_isAnAlphaNumericString(passport.optionalField1),
+    _isAnAlphaNumericStringOrEmpty(passport.optionalField1),
     'Optional field 1 must be an alphanumeric string.'
   )
 
   _testAndThrowException(
-    !_isAnAlphaNumericString(passport.optionalField2),
+    _isAnAlphaNumericStringOrEmpty(passport.optionalField2),
     'Optional field 2 must be an alphanumeric string.'
   )
 
@@ -56,7 +56,7 @@ const _checkPassportInput = passport => {
     'Second optional field is not available for TD3 format.'
   )
   _testAndThrowException(
-    !_isDateFormatValid(passport.expirationDate),
+    _isDateFormatValid(passport.expirationDate),
     'Passport expiration date is not valid.'
   )
 }
@@ -76,10 +76,7 @@ const _checkUserInput = user => {
     "User's date of birth is not valid."
   )
 
-  _testAndThrowException(
-    _isSexValid(user.dateOfBirth),
-    "User's sex is not valid."
-  )
+  _testAndThrowException(_isSexValid(user.sex), "User's sex is not valid.")
 }
 
 const _testAndThrowException = (testToValidate, errorMessage) => {
@@ -89,6 +86,9 @@ const _testAndThrowException = (testToValidate, errorMessage) => {
 }
 
 const _isAnAlphaNumericString = str => new RegExp(/^[a-zA-Z0-9]+$/g).test(str)
+
+const _isAnAlphaNumericStringOrEmpty = str =>
+  str === '' || _isAnAlphaNumericString(str)
 
 const _isALetter = chr => new RegExp(/^[a-zA-Z]$/g).test(chr)
 
@@ -101,7 +101,10 @@ const _isAValidPrecisionOfType = (chr, mzrType) =>
 
 const _isMrzTypeValid = type => ['td1', 'td3'].indexOf(type) !== -1
 
-const _isDateFormatValid = stringDate => !isNaN(Date.parse(stringDate))
+const _isDateFormatValid = stringDate => {
+  console.log('DATE ====== TO VALIDATE =222=', isNaN(Date.parse(stringDate)))
+  return !isNaN(Date.parse(stringDate))
+}
 
 const _isNameFormatValid = name =>
   new RegExp(/^([a-zA-Z]+[ |-|-|']?)+$/g).test(name)

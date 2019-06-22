@@ -5,7 +5,6 @@ const { generateMrzTd3 } = require('./src/formats/td3')
 
 const generateMrz = data => {
   checkInputFormat(data)
-  setDefaultValueToUndefinedFields(data)
   switch (data.passport.mrzType) {
     case 'td1':
       return generateMrzTd1(data)
