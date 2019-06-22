@@ -72,7 +72,8 @@ Format of input data:
 |             | givenNames     | Yes      | AlphaNum(-)\*\*  | User given names.                         | 'John Max Steven' |
 |             | nationality    | Yes      | Country ISO \*   | User nationality.                         | 'BEL'             |
 |             | dateOfBirth    | Yes      | Stringified Date | User date of birth.                       | '1988-03-15'      |
-|             | dateOfBirth    | Yes      | Stringified Date | User date of birth.                       | '1988-03-15'      |
+|             | sex            | Yes      | 'male'or'female' | User sex.                                 | 'female'          |
+|             |                |          | or'unspecified'  |
 
 \* : See the list below to get correct country code.
 \*\* : Are allowed hyphens, spaces and apostrophes.
