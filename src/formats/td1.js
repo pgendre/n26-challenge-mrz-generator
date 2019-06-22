@@ -13,7 +13,8 @@ const {
   generatePassportNumber,
   generateSex,
   generateCountryCode,
-  generateDateWithCheckDigit
+  generateDateWithCheckDigit,
+  generateSurnameAndGivenNames
 } = require('./common')
 
 const lineLength = 30
@@ -42,7 +43,7 @@ const _generateLine2 = ({ passport, user }) => {
 
 const _generateLine3 = ({ passport, user }) => {
   let line = generateEmptyLine(lineLength)
-  return line
+  return generateSurnameAndGivenNames(line, user, 0, lineLength)
 }
 
 const _generateOptionalField = (line, value, position, maxLength) => {

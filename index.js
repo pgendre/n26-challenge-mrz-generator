@@ -1,10 +1,7 @@
-const {
-  checkInputFormat,
-  setDefaultValueToUndefinedFields
-} = require('src/services/checkInputFormat')
+const { checkInputFormat } = require('./src/services/check-input-format')
 
-const { generateMrzTd1 } = require('./formats/td1')
-const { generateMrzTd3 } = require('./formats/td3')
+const { generateMrzTd1 } = require('./src/formats/td1')
+const { generateMrzTd3 } = require('./src/formats/td3')
 
 const generateMrz = data => {
   checkInputFormat(data)
@@ -18,3 +15,5 @@ const generateMrz = data => {
       return generateMrzTd3(data)
   }
 }
+
+module.exports = { generateMrz }

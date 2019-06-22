@@ -110,4 +110,4 @@ const _isCountryCodeValid = code => countryCodes.indexOf(code) !== -1
 
 const _isSexValid = sex => ['female', 'male', 'unspecified'].indexOf(sex) !== -1
 
-module.exports = { checkInputFormat, setDefaultValueToUndefinedFields }
+module.exports = { checkInputFormat }
