@@ -101,10 +101,7 @@ const _isAValidPrecisionOfType = (chr, mzrType) =>
 
 const _isMrzTypeValid = type => ['td1', 'td3'].indexOf(type) !== -1
 
-const _isDateFormatValid = stringDate => {
-  console.log('DATE ====== TO VALIDATE =222=', isNaN(Date.parse(stringDate)))
-  return !isNaN(Date.parse(stringDate))
-}
+const _isDateFormatValid = stringDate => !isNaN(Date.parse(stringDate))
 
 const _isNameFormatValid = name =>
   new RegExp(/^([a-zA-Z]+[ |-|-|']?)+$/g).test(name)

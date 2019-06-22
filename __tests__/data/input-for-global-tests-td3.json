@@ -1,0 +1,18 @@
+{
+  "passport": {
+    "mrzType": "td3",
+    "type": "p",
+    "issuingCountry": "FRA",
+    "number": "11av56868",
+    "expirationDate": "11 May 2021 00:00:00 GMT",
+    "optionalField1": "",
+    "optionalField2": ""
+  },
+  "user": {
+    "surname": "Gendre",
+    "givenNames": "Pierre Joseh Alexandre",
+    "nationality": "FRA",
+    "dateOfBirth": "17 Oct 1986 00:12:00 GMT",
+    "sex": "male"
+  }
+}
