@@ -18,7 +18,8 @@ const {
 
 const lineLength = 44
 
-const generateMrz = data => `${_generateLine1(data)}\n${_generateLine2(data)}`
+const generateMrzTd3 = data =>
+  `${_generateLine1(data)}\n${_generateLine2(data)}`
 
 const _generateLine1 = ({ passport, user }) => {
   let line = generateEmptyLine(lineLength)
@@ -63,4 +64,4 @@ const _generateGlobalDigitCheck = line => {
   return replaceSubStringAtPositionToUpCase(line, digitCheck, 43)
 }
 
-module.exports = { generateMrz }
+module.exports = { generateMrzTd3 }

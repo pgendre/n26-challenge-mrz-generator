@@ -1,16 +1,22 @@
 const countryCodes = require('./data/country-codes')
 
-const checkInputFormat = ({ mrzType, passport, user }) => {
-  _testAndThrowException = (_isMrzTypeValid(type), 'Mrz type is not valid.')
+const checkInputFormat = ({ passport, user }) => {
+  _setDefaultValuesToUndefinedFields({ passport, user })
   _checkPassportInput(passport)
   _checkUserInput(user)
 }
 
-const setDefaultValueToUndefinedFields = ({ passport, user }) => {
+const _setDefaultValuesToUndefinedFields = ({ passport, user }) => {
   if (!passport.optionalField1) passport.optionalField1 = ''
   if (!passport.optionalField2) passport.optionalField2 = ''
 }
+
 const _checkPassportInput = passport => {
+  _testAndThrowException(
+    _isMrzTypeValid(passport.mrzType),
+    'Mrz type is not valid.'
+  )
+
   _testAndThrowException(
     _isALetter(passport.type),
     'Passport type must be a letter.'
@@ -21,6 +27,10 @@ const _checkPassportInput = passport => {
     'Second letter for passport type is not valid.'
   )
 
+  _testAndThrowException(
+    _isAValidPassportNumber(passport.number),
+    'Passport number is not valid.'
+  )
   _testAndThrowException(
     _isCountryCodeValid(passport.issuingCountry),
     'Passport issuing country is not a valid ISO 3166 code.'
@@ -81,6 +91,9 @@ const _testAndThrowException = (testToValidate, errorMessage) => {
 const _isAnAlphaNumericString = str => new RegExp(/^[a-zA-Z0-9]+$/g).test(str)
 
 const _isALetter = chr => new RegExp(/^[a-zA-Z]$/g).test(chr)
+
+const _isAValidPassportNumber = number =>
+  new RegExp(/^[a-zA-Z0-9]{9}$/g).test(number)
 
 const _isAValidPrecisionOfType = (chr, mzrType) =>
   chr === undefined ||

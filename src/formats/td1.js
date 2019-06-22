@@ -18,7 +18,7 @@ const {
 
 const lineLength = 30
 
-const generateMrz = data =>
+const generateMrzTd1 = data =>
   `${_generateLine1(data)}\n${_generateLine2(data)}\n${_generateLine3(data)}`
 
 const _generateLine1 = ({ passport, user }) => {
@@ -51,4 +51,4 @@ const _generateOptionalField = (line, value, position, maxLength) => {
   return replaceSubStringAtPositionToUpCase(line, field, position)
 }
 
-module.exports = { generateMrz }
+module.exports = { generateMrzTd1 }
