@@ -4,9 +4,7 @@ The module allows to create a MRZ (Machine Readable Zone) of type TD1 and TD3.</
 For more information, check the following page: </br>
 https://en.wikipedia.org/wiki/Machine-readable_passport
 
-### How to use it
-
-#### Installation
+### Installation
 
 Last version:
 
@@ -20,7 +18,7 @@ The **x.y.z** version:
 npm install --save https://github.com/pgendre/n26-challenge-mrz-generator.git#x.y.z
 ```
 
-#### Basic usage
+### Basic usage
 
 ```
 import { generateMrz } from 'mrz-generator'
@@ -54,7 +52,7 @@ const basicTest => {
 }
 ```
 
-#### API Specification
+### API Specification
 
 Format of input data:
 
@@ -78,7 +76,7 @@ Format of input data:
 \* : See the list below to get correct country code.
 \*\* : Are allowed hyphens, spaces and apostrophes.
 
-#### Countries format
+### Countries format
 
 ABW Aruba
 AFG Afghanistan
