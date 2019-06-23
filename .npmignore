@@ -1,3 +1,5 @@
 .babelrc
 __tests__
 .gitignore
+.eslintrc.json
+.prettierrc.json
