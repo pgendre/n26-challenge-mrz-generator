@@ -15,8 +15,8 @@ const _doesStringFitToFormat = inputString =>
 const _stringIntoArrayOfChars = str => str.split('')
 
 const _arrayOfCharIntoArrayOfNumber = arr =>
-  arr.map(
-    chr => (_isCharANumber(chr) ? Number(chr) : _convertCharIntoNumber(chr))
+  arr.map(chr =>
+    _isCharANumber(chr) ? Number(chr) : _convertCharIntoNumber(chr)
   )
 
 const _convertCharIntoNumber = chr => (chr === '<' ? 0 : chr.charCodeAt(0) - 55)
