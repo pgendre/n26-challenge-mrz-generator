@@ -5,11 +5,8 @@ const {
   truncateString
 } = require('../services/string')
 
-const { checkDigitCalculation } = require('../services/check-digit')
-
 const {
   generatePassportType,
-  generateIssuingCountry,
   generatePassportNumber,
   generateSex,
   generateCountryCode,
@@ -22,7 +19,7 @@ const lineLength = 30
 const generateMrzTd1 = data =>
   `${_generateLine1(data)}\n${_generateLine2(data)}\n${_generateLine3(data)}`
 
-const _generateLine1 = ({ passport, user }) => {
+const _generateLine1 = ({ passport }) => {
   let line = generateEmptyLine(lineLength)
   line = generatePassportType(line, passport)
   line = generateCountryCode(line, passport.issuingCountry, 2)
@@ -41,7 +38,7 @@ const _generateLine2 = ({ passport, user }) => {
   return line
 }
 
-const _generateLine3 = ({ passport, user }) => {
+const _generateLine3 = ({ user }) => {
   let line = generateEmptyLine(lineLength)
   return generateSurnameAndGivenNames(line, user, 0, lineLength)
 }

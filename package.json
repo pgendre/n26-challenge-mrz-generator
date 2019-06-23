@@ -5,7 +5,9 @@
     "Enable a type TD1 and TD3 MRZ (Machine Readable Zone) text generation.",
   "main": "index.js",
   "scripts": {
-    "test": "export NODE_ENV=test && jest"
+    "test": "export NODE_ENV=test && jest",
+    "eslint":
+      "./node_modules/.bin/eslint \"./index.js\" \"./src/**/*.js\" \"./__tests__/**/*.js\""
   },
   "keywords": ["mrz", "generator", "node"],
   "author": "Pierre Gendre",
@@ -13,6 +15,7 @@
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
+    "eslint": "^6.0.0",
     "jest": "^24.8.0",
     "rewire": "^4.0.1"
   }

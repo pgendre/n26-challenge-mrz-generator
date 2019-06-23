@@ -6,7 +6,7 @@ const checkInputFormat = ({ passport, user }) => {
   _checkUserInput(user)
 }
 
-const _setDefaultValuesToUndefinedFields = ({ passport, user }) => {
+const _setDefaultValuesToUndefinedFields = ({ passport }) => {
   if (!passport.optionalField1) passport.optionalField1 = ''
   if (!passport.optionalField2) passport.optionalField2 = ''
 }
@@ -52,7 +52,7 @@ const _checkPassportInput = passport => {
   )
 
   _testAndThrowException(
-    !(passport.optionalField2 && mrzType === 'td3'),
+    !(passport.optionalField2 !== '' && passport.mrzType === 'td3'),
     'Second optional field is not available for TD3 format.'
   )
   _testAndThrowException(
