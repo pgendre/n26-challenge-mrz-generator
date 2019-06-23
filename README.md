@@ -45,7 +45,7 @@ const basicTest => {
   try {
     const mrz = generateMrz(inputData)
     console.log(mrz)
-    // > 'P<FRA11AV568680<<<<<<<<<<<<<<<\n8610175M2105116FRA<<<<<<<<<<<<\nGENDRE<<PIERRE<JOSEH<ALEXANDRE'
+    // > 'P<FRA11AV568680<<<<<<<<<<<<<<<\n8610175M2105116FRA<<<<<<<<<<<<\nGENDRE<<PIERRE<JOSEPH<ALEXANDR'
   } catch (e) {
     console.error(e)
   }
@@ -54,7 +54,7 @@ const basicTest => {
 
 ### API Specification
 
-Format of input data:
+Format of input data: </br>
 
 | 1 level key | 2 level key    | Required | Format           | Description                               | Example           |
 | ----------- | -------------- | -------- | ---------------- | ----------------------------------------- | ----------------- |
