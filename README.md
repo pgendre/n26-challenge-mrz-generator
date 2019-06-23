@@ -18,6 +18,21 @@ The **x.y.z** version:
 npm install --save https://github.com/pgendre/n26-challenge-mrz-generator.git#x.y.z
 ```
 
+### N26 challenge
+
+To get a concrete example, run tests :
+
+```
+npm test
+```
+
+The MRZ of type TD3 should be displayed in your console. </br>
+The verification can be done with the picture located in the following directory: </br>
+
+```
+./passport_picture
+```
+
 ### Basic usage
 
 ```
@@ -66,8 +81,8 @@ Format of input data: </br>
 |             | expirationDate | Yes      | Stringified Date | Format is free. Document expiration date. | '2023-06-24'      |
 |             | optionalField1 | No       | AlphaNum(-)      | Optional field.                           | '54 option32'     |
 |             | optionalField2 | No       | AlphaNum(-)      | Optional field (only available for TD1).  | 'other 98'        |
-| user        | surname        | Yes      | AlphaNum(-)\*\*  | User surname.                             | 'Willson Mark'    |
-|             | givenNames     | Yes      | AlphaNum(-)\*\*  | User given names.                         | 'John Max Steven' |
+| user        | surname        | Yes      | Alpha(-)\*\*     | User surname.                             | 'Willson Mark'    |
+|             | givenNames     | Yes      | Alpha(-)\*\*     | User given names.                         | 'John Max Steven' |
 |             | nationality    | Yes      | Country ISO \*   | User nationality.                         | 'BEL'             |
 |             | dateOfBirth    | Yes      | Stringified Date | User date of birth.                       | '1988-03-15'      |
 |             | sex            | Yes      | 'male'or'female' | User sex.                                 | 'female'          |
@@ -79,251 +94,251 @@ Format of input data: </br>
 ### Countries format
 
 ABW Aruba
-AFG Afghanistan
-AGO Angola
-AIA Anguilla
-ALA Åland Islands
-ALB Albania
-AND Andorra
-ARE United Arab Emirates
-ARG Argentina
-ARM Armenia
-ASM American Samoa
-ATA Antarctica
-ATF French Southern Territories
-ATG Antigua and Barbuda
-AUS Australia
-AUT Austria
-AZE Azerbaijan
-BDI Burundi
-BEL Belgium
-BEN Benin
-BES Bonaire, Sint Eustatius and Saba
-BFA Burkina Faso
-BGD Bangladesh
-BGR Bulgaria
-BHR Bahrain
-BHS Bahamas
-BIH Bosnia and Herzegovina
-BLM Saint Barthélemy
-BLR Belarus
-BLZ Belize
-BMU Bermuda
-BOL Bolivia (Plurinational State of)
-BRA Brazil
-BRB Barbados
-BRN Brunei Darussalam
-BTN Bhutan
-BVT Bouvet Island
-BWA Botswana
-CAF Central African Republic
-CAN Canada
-CCK Cocos (Keeling) Islands
-CHE Switzerland
-CHL Chile
-CHN China
-CIV Côte d'Ivoire
-CMR Cameroon
-COD Congo, Democratic Republic of the
-COG Congo
-COK Cook Islands
-COL Colombia
-COM Comoros
-CPV Cabo Verde
-CRI Costa Rica
-CUB Cuba
-CUW Curaçao
-CXR Christmas Island
-CYM Cayman Islands
-CYP Cyprus
-CZE Czechia
-DEU Germany
-DJI Djibouti
-DMA Dominica
-DNK Denmark
-DOM Dominican Republic
-DZA Algeria
-ECU Ecuador
-EGY Egypt
-ERI Eritrea
-ESH Western Sahara
-ESP Spain
-EST Estonia
-ETH Ethiopia
-FIN Finland
-FJI Fiji
-FLK Falkland Islands (Malvinas)
-FRA France
-FRO Faroe Islands
-FSM Micronesia (Federated States of)
-GAB Gabon
-GBR United Kingdom of Great Britain and Northern Ireland
-GEO Georgia
-GGY Guernsey
-GHA Ghana
-GIB Gibraltar
-GIN Guinea
-GLP Guadeloupe
-GMB Gambia
-GNB Guinea-Bissau
-GNQ Equatorial Guinea
-GRC Greece
-GRD Grenada
-GRL Greenland
-GTM Guatemala
-GUF French Guiana
-GUM Guam
-GUY Guyana
-HKG Hong Kong
-HMD Heard Island and McDonald Islands
-HND Honduras
-HRV Croatia
-HTI Haiti
-HUN Hungary
-IDN Indonesia
-IMN Isle of Man
-IND India
-IOT British Indian Ocean Territory
-IRL Ireland
-IRN Iran (Islamic Republic of)
-IRQ Iraq
-ISL Iceland
-ISR Israel
-ITA Italy
-JAM Jamaica
-JEY Jersey
-JOR Jordan
-JPN Japan
-KAZ Kazakhstan
-KEN Kenya
-KGZ Kyrgyzstan
-KHM Cambodia
-KIR Kiribati
-KNA Saint Kitts and Nevis
-KOR Korea, Republic of
-KWT Kuwait
-LAO Lao People's Democratic Republic
-LBN Lebanon
-LBR Liberia
-LBY Libya
-LCA Saint Lucia
-LIE Liechtenstein
-LKA Sri Lanka
-LSO Lesotho
-LTU Lithuania
-LUX Luxembourg
-LVA Latvia
-MAC Macao
-MAF Saint Martin (French part)
-MAR Morocco
-MCO Monaco
-MDA Moldova, Republic of
-MDG Madagascar
-MDV Maldives
-MEX Mexico
-MHL Marshall Islands
-MKD North Macedonia
-MLI Mali
-MLT Malta
-MMR Myanmar
-MNE Montenegro
-MNG Mongolia
-MNP Northern Mariana Islands
-MOZ Mozambique
-MRT Mauritania
-MSR Montserrat
-MTQ Martinique
-MUS Mauritius
-MWI Malawi
-MYS Malaysia
-MYT Mayotte
-NAM Namibia
-NCL New Caledonia
-NER Niger
-NFK Norfolk Island
-NGA Nigeria
-NIC Nicaragua
-NIU Niue
-NLD Netherlands
-NOR Norway
-NPL Nepal
-NRU Nauru
-NZL New Zealand
-OMN Oman
-PAK Pakistan
-PAN Panama
-PCN Pitcairn
-PER Peru
-PHL Philippines
-PLW Palau
-PNG Papua New Guinea
-POL Poland
-PRI Puerto Rico
-PRK Korea (Democratic People's Republic of)
-PRT Portugal
-PRY Paraguay
-PSE Palestine, State of
-PYF French Polynesia
-QAT Qatar
-REU Réunion
-ROU Romania
-RUS Russian Federation
-RWA Rwanda
-SAU Saudi Arabia
-SDN Sudan
-SEN Senegal
-SGP Singapore
-SGS South Georgia and the South Sandwich Islands
-SHN Saint Helena, Ascension and Tristan da Cunha
-SJM Svalbard and Jan Mayen
-SLB Solomon Islands
-SLE Sierra Leone
-SLV El Salvador
-SMR San Marino
-SOM Somalia
-SPM Saint Pierre and Miquelon
-SRB Serbia
-SSD South Sudan
-STP Sao Tome and Principe
-SUR Suriname
-SVK Slovakia
-SVN Slovenia
-SWE Sweden
-SWZ Eswatini
-SXM Sint Maarten (Dutch part)
-SYC Seychelles
-SYR Syrian Arab Republic
-TCA Turks and Caicos Islands
-TCD Chad
-TGO Togo
-THA Thailand
-TJK Tajikistan
-TKL Tokelau
-TKM Turkmenistan
-TLS Timor-Leste
-TON Tonga
-TTO Trinidad and Tobago
-TUN Tunisia
-TUR Turkey
-TUV Tuvalu
-TWN Taiwan, Province of China
-TZA Tanzania, United Republic of
-UGA Uganda
-UKR Ukraine
-UMI United States Minor Outlying Islands
-URY Uruguay
-USA United States of America
-UZB Uzbekistan
-VAT Holy See
-VCT Saint Vincent and the Grenadines
-VEN Venezuela (Bolivarian Republic of)
-VGB Virgin Islands (British)
-VIR Virgin Islands (U.S.)
-VNM Viet Nam
-VUT Vanuatu
-WLF Wallis and Futuna
-WSM Samoa
-YEM Yemen
-ZAF South Africa
-ZMB Zambia
-ZWE Zimbabwe
+</br>AFG Afghanistan
+</br>AGO Angola
+</br>AIA Anguilla
+</br>ALA Åland Islands
+</br>ALB Albania
+</br>AND Andorra
+</br>ARE United Arab Emirates
+</br>ARG Argentina
+</br>ARM Armenia
+</br>ASM American Samoa
+</br>ATA Antarctica
+</br>ATF French Southern Territories
+</br>ATG Antigua and Barbuda
+</br>AUS Australia
+</br>AUT Austria
+</br>AZE Azerbaijan
+</br>BDI Burundi
+</br>BEL Belgium
+</br>BEN Benin
+</br>BES Bonaire, Sint Eustatius and Saba
+</br>BFA Burkina Faso
+</br>BGD Bangladesh
+</br>BGR Bulgaria
+</br>BHR Bahrain
+</br>BHS Bahamas
+</br>BIH Bosnia and Herzegovina
+</br>BLM Saint Barthélemy
+</br>BLR Belarus
+</br>BLZ Belize
+</br>BMU Bermuda
+</br>BOL Bolivia (Plurinational State of)
+</br>BRA Brazil
+</br>BRB Barbados
+</br>BRN Brunei Darussalam
+</br>BTN Bhutan
+</br>BVT Bouvet Island
+</br>BWA Botswana
+</br>CAF Central African Republic
+</br>CAN Canada
+</br>CCK Cocos (Keeling) Islands
+</br>CHE Switzerland
+</br>CHL Chile
+</br>CHN China
+</br>CIV Côte d'Ivoire
+</br>CMR Cameroon
+</br>COD Congo, Democratic Republic of the
+</br>COG Congo
+</br>COK Cook Islands
+</br>COL Colombia
+</br>COM Comoros
+</br>CPV Cabo Verde
+</br>CRI Costa Rica
+</br>CUB Cuba
+</br>CUW Curaçao
+</br>CXR Christmas Island
+</br>CYM Cayman Islands
+</br>CYP Cyprus
+</br>CZE Czechia
+</br>D Germany
+</br>DJI Djibouti
+</br>DMA Dominica
+</br>DNK Denmark
+</br>DOM Dominican Republic
+</br>DZA Algeria
+</br>ECU Ecuador
+</br>EGY Egypt
+</br>ERI Eritrea
+</br>ESH Western Sahara
+</br>ESP Spain
+</br>EST Estonia
+</br>ETH Ethiopia
+</br>FIN Finland
+</br>FJI Fiji
+</br>FLK Falkland Islands (Malvinas)
+</br>FRA France
+</br>FRO Faroe Islands
+</br>FSM Micronesia (Federated States of)
+</br>GAB Gabon
+</br>GBR United Kingdom of Great Britain and Northern Ireland
+</br>GEO Georgia
+</br>GGY Guernsey
+</br>GHA Ghana
+</br>GIB Gibraltar
+</br>GIN Guinea
+</br>GLP Guadeloupe
+</br>GMB Gambia
+</br>GNB Guinea-Bissau
+</br>GNQ Equatorial Guinea
+</br>GRC Greece
+</br>GRD Grenada
+</br>GRL Greenland
+</br>GTM Guatemala
+</br>GUF French Guiana
+</br>GUM Guam
+</br>GUY Guyana
+</br>HKG Hong Kong
+</br>HMD Heard Island and McDonald Islands
+</br>HND Honduras
+</br>HRV Croatia
+</br>HTI Haiti
+</br>HUN Hungary
+</br>IDN Indonesia
+</br>IMN Isle of Man
+</br>IND India
+</br>IOT British Indian Ocean Territory
+</br>IRL Ireland
+</br>IRN Iran (Islamic Republic of)
+</br>IRQ Iraq
+</br>ISL Iceland
+</br>ISR Israel
+</br>ITA Italy
+</br>JAM Jamaica
+</br>JEY Jersey
+</br>JOR Jordan
+</br>JPN Japan
+</br>KAZ Kazakhstan
+</br>KEN Kenya
+</br>KGZ Kyrgyzstan
+</br>KHM Cambodia
+</br>KIR Kiribati
+</br>KNA Saint Kitts and Nevis
+</br>KOR Korea, Republic of
+</br>KWT Kuwait
+</br>LAO Lao People's Democratic Republic
+</br>LBN Lebanon
+</br>LBR Liberia
+</br>LBY Libya
+</br>LCA Saint Lucia
+</br>LIE Liechtenstein
+</br>LKA Sri Lanka
+</br>LSO Lesotho
+</br>LTU Lithuania
+</br>LUX Luxembourg
+</br>LVA Latvia
+</br>MAC Macao
+</br>MAF Saint Martin (French part)
+</br>MAR Morocco
+</br>MCO Monaco
+</br>MDA Moldova, Republic of
+</br>MDG Madagascar
+</br>MDV Maldives
+</br>MEX Mexico
+</br>MHL Marshall Islands
+</br>MKD North Macedonia
+</br>MLI Mali
+</br>MLT Malta
+</br>MMR Myanmar
+</br>MNE Montenegro
+</br>MNG Mongolia
+</br>MNP Northern Mariana Islands
+</br>MOZ Mozambique
+</br>MRT Mauritania
+</br>MSR Montserrat
+</br>MTQ Martinique
+</br>MUS Mauritius
+</br>MWI Malawi
+</br>MYS Malaysia
+</br>MYT Mayotte
+</br>NAM Namibia
+</br>NCL New Caledonia
+</br>NER Niger
+</br>NFK Norfolk Island
+</br>NGA Nigeria
+</br>NIC Nicaragua
+</br>NIU Niue
+</br>NLD Netherlands
+</br>NOR Norway
+</br>NPL Nepal
+</br>NRU Nauru
+</br>NZL New Zealand
+</br>OMN Oman
+</br>PAK Pakistan
+</br>PAN Panama
+</br>PCN Pitcairn
+</br>PER Peru
+</br>PHL Philippines
+</br>PLW Palau
+</br>PNG Papua New Guinea
+</br>POL Poland
+</br>PRI Puerto Rico
+</br>PRK Korea (Democratic People's Republic of)
+</br>PRT Portugal
+</br>PRY Paraguay
+</br>PSE Palestine, State of
+</br>PYF French Polynesia
+</br>QAT Qatar
+</br>REU Réunion
+</br>ROU Romania
+</br>RUS Russian Federation
+</br>RWA Rwanda
+</br>SAU Saudi Arabia
+</br>SDN Sudan
+</br>SEN Senegal
+</br>SGP Singapore
+</br>SGS South Georgia and the South Sandwich Islands
+</br>SHN Saint Helena, Ascension and Tristan da Cunha
+</br>SJM Svalbard and Jan Mayen
+</br>SLB Solomon Islands
+</br>SLE Sierra Leone
+</br>SLV El Salvador
+</br>SMR San Marino
+</br>SOM Somalia
+</br>SPM Saint Pierre and Miquelon
+</br>SRB Serbia
+</br>SSD South Sudan
+</br>STP Sao Tome and Principe
+</br>SUR Suriname
+</br>SVK Slovakia
+</br>SVN Slovenia
+</br>SWE Sweden
+</br>SWZ Eswatini
+</br>SXM Sint Maarten (Dutch part)
+</br>SYC Seychelles
+</br>SYR Syrian Arab Republic
+</br>TCA Turks and Caicos Islands
+</br>TCD Chad
+</br>TGO Togo
+</br>THA Thailand
+</br>TJK Tajikistan
+</br>TKL Tokelau
+</br>TKM Turkmenistan
+</br>TLS Timor-Leste
+</br>TON Tonga
+</br>TTO Trinidad and Tobago
+</br>TUN Tunisia
+</br>TUR Turkey
+</br>TUV Tuvalu
+</br>TWN Taiwan, Province of China
+</br>TZA Tanzania, United Republic of
+</br>UGA Uganda
+</br>UKR Ukraine
+</br>UMI United States Minor Outlying Islands
+</br>URY Uruguay
+</br>USA United States of America
+</br>UZB Uzbekistan
+</br>VAT Holy See
+</br>VCT Saint Vincent and the Grenadines
+</br>VEN Venezuela (Bolivarian Republic of)
+</br>VGB Virgin Islands (British)
+</br>VIR Virgin Islands (U.S.)
+</br>VNM Viet Nam
+</br>VUT Vanuatu
+</br>WLF Wallis and Futuna
+</br>WSM Samoa
+</br>YEM Yemen
+</br>ZAF South Africa
+</br>ZMB Zambia
+</br>ZWE Zimbabwe
