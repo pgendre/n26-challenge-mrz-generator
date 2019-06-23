@@ -27,6 +27,28 @@ npm test
 ```
 
 The MRZ of type TD3 should be displayed in your console. </br>
+Associated input data :
+
+```
+{
+  "passport": {
+    "mrzType": "td3",
+    "type": "p",
+    "issuingCountry": "FRA",
+    "number": "11av56868",
+    "expirationDate": "11 May 2021 00:00:00 GMT"
+  },
+  "user": {
+    "surname": "Gendre",
+    "givenNames": "Pierre Joseph Alexandre",
+    "nationality": "FRA",
+    "dateOfBirth": "17 Oct 1986 00:12:00 GMT",
+    "sex": "male"
+  }
+}
+
+```
+
 The verification can be done with the picture located in the following directory: </br>
 
 ```
